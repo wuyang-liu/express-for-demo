@@ -3,5 +3,8 @@
   "meta": {
     "type": "backend"
   },
-  "hash": "675be791"
+  "hash": "675be791",
+  "backend": {
+    "platform": "node12"
+  }
 }
