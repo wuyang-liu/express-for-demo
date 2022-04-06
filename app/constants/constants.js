@@ -1,0 +1,4 @@
+const NUM_OF_QUESTIONS = 36;
+const NUM_OF_QUESTIONS_NEED_TO_ANSWER = 4;
+module.exports = NUM_OF_QUESTIONS;
+module.exports = NUM_OF_QUESTIONS_NEED_TO_ANSWER;
