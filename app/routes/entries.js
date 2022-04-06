@@ -14,14 +14,13 @@ router.get('/', (request, response) => {
 
     if (null != entries) {
       const parsedEntries = JSON.parse(JSON.stringify(entries));
-
+      console.log(parsedEntries);
       const allRecords = parsedEntries.map(entry => {
         const username = entry.username;
         const questions = entry.questions;
-        console.log(questions);
         const result = [username];
         let count = 0;
-        for (let i = 0; i <= 36; i++) {
+        for (let i = 0; i < 36; i++) {
           if (count < 10 && i + 1 === questions[count].qid) {
             result.push(questions[count].scale);
             count++;
@@ -29,7 +28,6 @@ router.get('/', (request, response) => {
             result.push('NA');
           }
         }
-        console.log(result);
         return result;
       })
 
@@ -47,7 +45,7 @@ router.get('/', (request, response) => {
 //
 //   const { id } = request.params;
 //
-//   Task.findOne({ _id: id }, (err, res) => {
+//   Entry.findOne({ _id: id }, (err, res) => {
 //     if (err) {
 //       console.error(err);
 //       return response.sendStatus(500);
@@ -86,7 +84,7 @@ router.post('/', (request, response) => {
 //
 //   if (!name && !desc) return response.sendStatus(400);
 //
-//   Task.findOneAndUpdate({ _id: id }, { name, desc })
+//   Entry.findOneAndUpdate({ _id: id }, { name, desc })
 //     .then(res => response.send(res))
 //     .catch(e => {
 //       console.error(e);
@@ -94,16 +92,16 @@ router.post('/', (request, response) => {
 //     });
 // });
 //
-// router.delete('/:id', async (request, response) => {
-//
-//   const { id } = request.params;
-//
-//   Task.deleteOne({ _id: id })
-//     .then(() => response.sendStatus(200))
-//     .catch(e => {
-//       console.error(e);
-//       response.sendStatus(500);
-//     });
-// });
+router.delete('/:id', async (request, response) => {
+  console.log(request);
+  const { id } = request.params;
+  console.log(id);
+  Entry.deleteOne({ _id: id })
+    .then(() => response.sendStatus(200))
+    .catch(e => {
+      console.error(e);
+      response.sendStatus(500);
+    });
+});
 
 module.exports = router;
