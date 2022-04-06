@@ -16,7 +16,6 @@ const createCSV = (allRecords) => {
     csvContent += row + "\r\n";
   });
 
-  console.log(allRecords);
   allRecords.forEach(function(rowArray) {
     let row = rowArray.join(",");
     csvContent += row + "\r\n";
