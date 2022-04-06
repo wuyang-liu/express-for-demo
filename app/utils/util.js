@@ -1,5 +1,5 @@
 const headRow = [
-  ["username",
+  ["username", "minutesElapsed",
     "mfq_1", "mfq_2","mfq_3","mfq_4","mfq_5","mfq_6",
     "mfq_7","mfq_8","mfq_9","mfq_10","mfq_11","mfq_12",
     "mfq_13","mfq_14","mfq_15","mfq_16","mfq_17","mfq_18",

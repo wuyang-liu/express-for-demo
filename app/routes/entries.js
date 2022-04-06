@@ -16,11 +16,10 @@ router.get('/', (request, response) => {
       const parsedEntries = JSON.parse(JSON.stringify(entries));
       console.log("parsedEntries", parsedEntries);
       const allRecords = parsedEntries.map(entry => {
-        const username = entry.username;
-        const questions = entry.questions;
-        console.log("username", username);
-        console.log("questions", questions);
-        const result = [username];
+        const {username, minutesElapsed, questions} = entry;
+        // const username = entry.username;
+        // const questions = entry.questions;
+        const result = [username, minutesElapsed];
         let count = 0;
         for (let i = 0; i < 36; i++) {
           if (count < 10 && i + 1 === questions[count].qid) {
@@ -60,14 +59,15 @@ router.post('/', (request, response) => {
 
   console.log(request.body);
 
-  const {username, options} = request.body;
+  const {username, minutesElapsed, options} = request.body;
   if (!username || !options){
     return response.sendStatus(400);
   }
 
   const entry = new Entry({
-    username: username,
-    questions: options
+    username,
+    minutesElapsed,
+    questions : options,
   });
 
   // const task = new Task({ name, desc });

@@ -10,6 +10,7 @@ const Question = new Schema({
 const Entry = new Schema({
     id: { type: Number, unique: true, sparse: true },
     username: { type: String, required: true, unique: true, max: 60 },
+    minutesElapsed: { type: Number},
     questions: [{}]
 });
 
